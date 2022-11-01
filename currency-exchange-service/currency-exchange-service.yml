@@ -1,26 +1,41 @@
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: "dev"
   h2:
     console:
       enabled : true
       path : /h2_console
   datasource:
-      url : jdbc:h2:mem:testdb
-      username : sa
-      password :
-      driverClassName : org.h2.Driver
+    url : jdbc:h2:mem:testdb
+    username : sa
+    password :
+    driverClassName : org.h2.Driver
+    initialization-mode : always
   jpa:
-     hibernate:
-       ddl-auto : create-drop
-     show-sql : true
+    hibernate:
+      ddl-auto : none
+    show-sql : true
      properties :
-       hibernate :
+      hibernate :
+        jdbc :
+          lob :
+            non_contextual_creation : true
           dialect : org.hibernate.dialect.HSQLDialect
+  session:
+    jdbc :
+      initialize-schema : always
+  sql :
+    init :
+      data-locations : classpath:schema.sql,classpath:data.sql
+     
 
 ---
 spring:
-  profiles: qa
+  config:
+    activate:
+      on-profile: "qa"
   datasource:
      url : jdbc:mysql://localhost:3306/my_exchange
      username : pratheush
