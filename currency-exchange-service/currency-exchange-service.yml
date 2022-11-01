@@ -17,7 +17,7 @@ spring:
     hibernate:
       ddl-auto : none
     show-sql : true
-     properties :
+    properties :
       hibernate :
         jdbc :
           lob :
