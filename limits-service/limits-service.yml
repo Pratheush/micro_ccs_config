@@ -1,0 +1,12 @@
+---
+spring:
+  profiles: dev
+limits-service:
+  minimum: 31
+  maximum: 311
+---
+spring:
+  profiles: qa
+limits-service:
+  minimum: 42
+  maximum: 442 
