@@ -3,37 +3,37 @@ spring:
   profiles: dev
   h2:
     console:
-	enabled : true
-	path : /h2_console
+      enabled : true
+      path : /h2_console
   datasource:
-	url : jdbc:h2:mem:testdb
-	username : sa
-	password :
-	driverClassName : org.h2.Driver
+      url : jdbc:h2:mem:testdb
+      username : sa
+      password :
+      driverClassName : org.h2.Driver
   jpa:
      hibernate:
-	ddl-auto : create-drop
+       ddl-auto : create-drop
      show-sql : true
      properties :
-	hibernate :
-	     dialect : org.hibernate.dialect.HSQLDialect
+       hibernate :
+          dialect : org.hibernate.dialect.HSQLDialect
 
 ---
 spring:
   profiles: qa
   datasource:
-	url : jdbc:mysql://localhost:3306/my_exchange
-	username : pratheush
-	password : Pratheush@18
-	driverClassName : com.mysql.cj.jdbc.Driver
-	initialization-mode : always
+     url : jdbc:mysql://localhost:3306/my_exchange
+     username : pratheush
+     password : Pratheush@18
+     driverClassName : com.mysql.cj.jdbc.Driver
+     initialization-mode : always
   jpa:
      hibernate:
-	ddl-auto : update
+        ddl-auto : update
      show-sql : true
      properties :
-	hibernate :
-	     dialect : org.hibernate.dialect.MySQL5Dialect
+        hibernate :
+           dialect : org.hibernate.dialect.MySQL5Dialect
 
   
 
