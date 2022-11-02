@@ -1,3 +1,5 @@
+server:
+  port: 8000
 ---
 spring:
   config:
@@ -29,6 +31,11 @@ spring:
   sql :
     init :
       data-locations : classpath:schema.sql,classpath:data.sql
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/
      
 
 ---
