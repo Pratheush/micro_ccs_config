@@ -5,12 +5,12 @@ spring:
   config:
     activate:
       on-profile: "dev"
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lowerCaseServiceId: true
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lowerCaseServiceId: true
 
 eureka:
   client:
