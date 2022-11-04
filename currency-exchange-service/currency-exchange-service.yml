@@ -37,10 +37,10 @@ eureka:
     service-url:
       default-zone: http://localhost:8761/eureka
 
-resilience4j.retry:
-  instances:
-    UNSTABLE_SERVICE:
-      maxAttempts: 5
+#resilience4j.retry:
+#  instances:
+#    UNSTABLE_SERVICE:
+#      maxAttempts: 5
 #      waitDuration: 2
 #      enableExponentialBackoff: true
 #      exponentialBackoffMultiplier: 2
