@@ -39,7 +39,7 @@ eureka:
 
 resilience4j.retry:
   instances:
-    unstableService:
+    UNSTABLE_SERVICE:
       maxAttempts: 5
 #      waitDuration: 2
 #      enableExponentialBackoff: true
