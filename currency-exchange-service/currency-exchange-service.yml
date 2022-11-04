@@ -40,7 +40,7 @@ eureka:
 resilience4j:
   circuitbreaker:
     instances:
-      unstable_service:
+      unstableService:
         registerHealthIndicator: true
         eventConsumerBufferSize: 10
         failureRateThreshold: 50
@@ -53,11 +53,11 @@ resilience4j:
 
   retry:
     instances:
-      unstable_service:
+      unstableService:
         maxRetryAttempts: 5
         waitDuration: 2
-        enableExponentialBackoff: true
-        exponentialBackoffMultiplier: 2
+ #       enableExponentialBackoff: true
+ #       exponentialBackoffMultiplier: 2
      
 
 ---
