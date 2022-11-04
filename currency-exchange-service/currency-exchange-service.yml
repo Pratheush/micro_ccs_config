@@ -54,7 +54,7 @@ resilience4j:
   retry:
     instances:
       unstable_service:
-        maxAttempts: 5
+        maxRetryAttempts: 5
         waitDuration: 2
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
