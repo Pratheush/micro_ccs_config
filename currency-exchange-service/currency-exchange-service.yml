@@ -1,6 +1,18 @@
 server:
   port: 8000
 ---
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
 spring:
   config:
     activate:
@@ -50,14 +62,13 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
         slidingWindowType: COUNT_BASED
-
   retry:
     instances:
       unstableService:
         maxRetryAttempts: 5
         waitDuration: 2
- #       enableExponentialBackoff: true
- #       exponentialBackoffMultiplier: 2
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
      
 
 ---
