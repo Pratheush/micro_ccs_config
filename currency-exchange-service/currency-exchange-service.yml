@@ -65,7 +65,7 @@ resilience4j:
   retry:
     instances:
       unstableService:
-        maxRetryAttempts: 5
+        maxAttempts: 5
         waitDuration: 10s
      
 
