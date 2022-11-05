@@ -72,10 +72,10 @@ resilience4j:
       unstableService:
         limitForPeriod: 2
         limitRefreshPeriod: 10s
-  bulkhead:
-    instances:
-      unstableService:
-        maxConcurrentCalls: 10  
+#  bulkhead:
+#    instances:
+#      unstableService:
+#        maxConcurrentCalls: 10  
   
     
 
