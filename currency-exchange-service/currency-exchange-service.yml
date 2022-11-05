@@ -62,16 +62,16 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 6
         slidingWindowSize: 10
         slidingWindowType: TIME_BASED
-  retry:
-    instances:
-      unstableService:
-        maxAttempts: 5
-        waitDuration: 10s
-#  ratelimiter:
+#  retry:
 #    instances:
 #      unstableService:
-#        limitForPeriod: 2
-#        limitRefreshPeriod: 10s
+#        maxAttempts: 5
+#        waitDuration: 10s
+  ratelimiter:
+    instances:
+      unstableService:
+        limitForPeriod: 2
+        limitRefreshPeriod: 10s
 #  bulkhead:
 #    instances:
 #      unstableService:
