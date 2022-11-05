@@ -55,11 +55,11 @@ resilience4j:
       unstableService:
         registerHealthIndicator: true
         eventConsumerBufferSize: 10
-        failureRateThreshold: 50
-        minimumNumberOfCalls: 5
+        failureRateThreshold: 80
+        minimumNumberOfCalls: 7
         automaticTransitionFromOpenToHalfOpenEnabled: true
         waitDurationInOpenState: 10s
-        permittedNumberOfCallsInHalfOpenState: 3
+        permittedNumberOfCallsInHalfOpenState: 6
         slidingWindowSize: 10
         slidingWindowType: TIME_BASED
   retry:
