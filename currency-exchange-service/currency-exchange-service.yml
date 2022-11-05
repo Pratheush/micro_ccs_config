@@ -75,7 +75,8 @@ resilience4j:
   bulkhead:
     instances:
       unstableService:
-        maxConcurrentCalls: 8 
+        maxConcurrentCalls: 8
+        maxWaitDuration: 50s
   
 ---
 spring:
