@@ -67,11 +67,11 @@ resilience4j:
       unstableService:
         maxAttempts: 5
         waitDuration: 10s
-  ratelimiter:
-    instances:
-      unstableService:
-        limitForPeriod: 2
-        limitRefreshPeriod: 10s
+#  ratelimiter:
+#    instances:
+#      unstableService:
+#        limitForPeriod: 2
+#        limitRefreshPeriod: 10s
 #  bulkhead:
 #    instances:
 #      unstableService:
