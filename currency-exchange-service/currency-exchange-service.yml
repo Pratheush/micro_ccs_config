@@ -67,6 +67,25 @@ resilience4j:
       unstableService:
         maxAttempts: 5
         waitDuration: 10s
+  ratelimiter:
+    instances:
+      unstableService:
+        limitForPeriod: 2
+        limitRefreshPeriod: 10s
+  bulkhead:
+    instances:
+      unstableService:
+        maxConcurrentCalls: 10  
+  
+    
+
+  
+
+
+resilience4j.ratelimiter.instances.default.limitForPeriod=2    // only 2 requests in every 10 seconds... 10 seconds is configured below line
+resilience4j.ratelimiter.instances.default.limitRefreshPeriod=10s
+resilience4j.bulkhead.instances.default.maxConcurrentCalls=10
+
      
 
 ---
