@@ -55,7 +55,7 @@ resilience4j:
       unstableService:
         registerHealthIndicator: true
         eventConsumerBufferSize: 10
-        failureRateThreshold: 80
+        failureRateThreshold: 90
         minimumNumberOfCalls: 7
         automaticTransitionFromOpenToHalfOpenEnabled: true
         waitDurationInOpenState: 10s
@@ -67,15 +67,15 @@ resilience4j:
 #      unstableService:
 #        maxAttempts: 5
 #        waitDuration: 10s
-  ratelimiter:
-    instances:
-      unstableService:
-        limitForPeriod: 2
-        limitRefreshPeriod: 10s
-#  bulkhead:
+#  ratelimiter:
 #    instances:
 #      unstableService:
-#        maxConcurrentCalls: 10  
+#        limitForPeriod: 2
+#        limitRefreshPeriod: 10s
+  bulkhead:
+    instances:
+      unstableService:
+        maxConcurrentCalls: 8 
   
 ---
 spring:
