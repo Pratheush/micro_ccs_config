@@ -5,6 +5,9 @@ spring:
   config:
     activate:
       on-profile: "dev"
+  sleuth:
+    sampler:
+      probability: 1.0
 
 
 eureka:

@@ -43,6 +43,9 @@ spring:
   sql :
     init :
       data-locations : classpath:schema.sql,classpath:data.sql
+  sleuth:
+    sampler:
+      probability: 1.0
 
 eureka:
   client:
