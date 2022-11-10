@@ -46,11 +46,15 @@ spring:
   sleuth:
     sampler:
       probability: 1.0
+  zipkin:
+#    baseUrl: http:'//localhost:9411/
+    baseUrl: http://zipkin-server:9411/
 
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8761/eureka
+#      default-zone: http:'//localhost:8761/eureka
+      default-zone: http://eureka-naming-server:8761/eureka
 
 resilience4j:
   circuitbreaker:
@@ -65,16 +69,16 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 6
         slidingWindowSize: 10
         slidingWindowType: TIME_BASED
-#  retry:
-#    instances:
-#      unstableService:
-#        maxAttempts: 5
-#        waitDuration: 10s
-#  ratelimiter:
-#    instances:
-#      unstableService:
-#        limitForPeriod: 2
-#        limitRefreshPeriod: 10s
+  retry:
+    instances:
+      unstableService:
+        maxAttempts: 4
+        waitDuration: 10s
+  ratelimiter:
+    instances:
+      unstableService:
+        limitForPeriod: 3
+        limitRefreshPeriod: 10s
   bulkhead:
     instances:
       unstableService:
