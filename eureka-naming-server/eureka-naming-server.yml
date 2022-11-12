@@ -1,5 +1,9 @@
 server:
   port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
 ---
 spring:
   config:
@@ -10,14 +14,7 @@ spring:
       probability: 1.0
   zipkin:
     baseUrl: http://localhost:9411/
-
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-
 ---
-
 spring:
   config:
     activate:
@@ -28,7 +25,3 @@ spring:
   zipkin:
     baseUrl: http://zipkin-server:9411/
 
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
