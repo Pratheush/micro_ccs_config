@@ -1,6 +1,6 @@
 server:
   port: 8000
----
+
 management:
   health:
     circuitbreakers:
@@ -12,6 +12,37 @@ management:
   endpoint:
     health:
       show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      unstableService:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 90
+        minimumNumberOfCalls: 7
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 6
+        slidingWindowSize: 10
+        slidingWindowType: TIME_BASED
+  retry:
+    instances:
+      unstableService:
+        maxAttempts: 4
+        waitDuration: 10s
+  ratelimiter:
+    instances:
+      unstableService:
+        limitForPeriod: 3
+        limitRefreshPeriod: 10s
+  bulkhead:
+    instances:
+      unstableService:
+        maxConcurrentCalls: 8
+        maxWaitDuration: 50s
+
+---
 
 spring:
   config:
@@ -47,45 +78,15 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-#    baseUrl: http:'//localhost:9411/
-    baseUrl: http://zipkin-server:9411/
+    baseUrl: http://localhost:9411/
 
 eureka:
   client:
     service-url:
-#      default-zone: http:'//localhost:8761/eureka
-      default-zone: http://eureka-naming-server:8761/eureka
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      unstableService:
-        registerHealthIndicator: true
-        eventConsumerBufferSize: 10
-        failureRateThreshold: 90
-        minimumNumberOfCalls: 7
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-        waitDurationInOpenState: 10s
-        permittedNumberOfCallsInHalfOpenState: 6
-        slidingWindowSize: 10
-        slidingWindowType: TIME_BASED
-  retry:
-    instances:
-      unstableService:
-        maxAttempts: 4
-        waitDuration: 10s
-  ratelimiter:
-    instances:
-      unstableService:
-        limitForPeriod: 3
-        limitRefreshPeriod: 10s
-  bulkhead:
-    instances:
-      unstableService:
-        maxConcurrentCalls: 8
-        maxWaitDuration: 50s
+      default-zone: http://localhost:8761/eureka
   
 ---
+
 spring:
   config:
     activate:
@@ -103,8 +104,46 @@ spring:
      properties :
         hibernate :
            dialect : org.hibernate.dialect.MySQL5Dialect
+---
 
-  
+spring:
+  config:
+    activate:
+      on-profile: "dokker"
+  h2:
+    console:
+      enabled : true
+      path : /h2_console
+  datasource:
+    url : jdbc:h2:mem:testdb
+    username : sa
+    password :
+    driverClassName : org.h2.Driver
+    initialization-mode : always
+  jpa:
+    hibernate:
+      ddl-auto : none
+    show-sql : true
+    properties :
+      hibernate :
+        jdbc :
+          lob :
+            non_contextual_creation : true
+          dialect : org.hibernate.dialect.HSQLDialect
+  session:
+    jdbc :
+      initialize-schema : always
+  sql :
+    init :
+      data-locations : classpath:schema.sql,classpath:data.sql
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    baseUrl: http://zipkin-server:9411/
 
-
+eureka:
+  client:
+    service-url:
+      default-zone: http://eureka-naming-server:8761/eureka
 

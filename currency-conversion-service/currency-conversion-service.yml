@@ -10,11 +10,26 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-#    baseUrl: http:'//localhost:9411/
+    baseUrl: http://localhost:9411/
+    
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "dokker"
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
     baseUrl: http://zipkin-server:9411/
 
 eureka:
   client:
     service-url:
-#      default-zone: http:'//localhost:8761/eureka
       default-zone: http://eureka-naming-server:8761/eureka
