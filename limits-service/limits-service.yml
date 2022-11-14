@@ -1,18 +1,24 @@
 ---
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: "dev"
 limits-service:
   minimum: 31
   maximum: 311
 ---
 spring:
-  profiles: qa
+  config:
+    activate:
+      on-profile: "qa"
 limits-service:
   minimum: 42
   maximum: 442
 ---
 spring:
-  profiles: dokker
+  config:
+    activate:
+      on-profile: "dokker"
 limits-service:
-  minimum: 13
-  maximum: 1313
+  minimum: 89
+  maximum: 1989
