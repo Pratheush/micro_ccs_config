@@ -24,8 +24,8 @@ spring:
     activate:
       on-profile: "dokker"
 limits-service:
-  minimum: 89
-  maximum: 1989
+  minimum: 19
+  maximum: 89
 
 eureka:
   client:
