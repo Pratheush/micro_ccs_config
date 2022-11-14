@@ -8,8 +8,8 @@ limits-service:
   maximum: 311
 eureka:
   client:
-    service-url:
-      default-zone: http://localhost:8761/eureka
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
 ---
 spring:
   config:
@@ -29,5 +29,5 @@ limits-service:
 
 eureka:
   client:
-    service-url:
-      default-zone: http://eureka-naming-server:8761/eureka
+    serviceUrl:
+      defaultZone: http://eureka-naming-server:8761/eureka
