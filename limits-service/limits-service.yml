@@ -9,4 +9,10 @@ spring:
   profiles: qa
 limits-service:
   minimum: 42
-  maximum: 442 
+  maximum: 442
+---
+spring:
+  profiles: dokker
+limits-service:
+  minimum: 13
+  maximum: 1313
